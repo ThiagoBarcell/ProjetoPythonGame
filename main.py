@@ -1,4 +1,5 @@
-import pygame
+from Code.Game import Game
 
-pygame.init()
-window = pygame.display.set_mode()
+game = Game()
+
+game.run()
