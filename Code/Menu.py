@@ -16,7 +16,7 @@ class Menu:
         #Define a opção do menu atual
         menu_option = 0
         #Configura a musica do menu
-        pygame.mixer_music.set_volume(0.1)
+        pygame.mixer_music.set_volume(GAME_VOLUME)
         pygame.mixer_music.load('./asset/Tema_Corrida/on-the-road-to-the-eighties_59sec-177566.mp3')
         pygame.mixer_music.play(-1)  # esse -1 significa que quando terminar a musica reinicia
 
