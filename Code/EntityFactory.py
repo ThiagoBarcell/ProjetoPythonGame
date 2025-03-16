@@ -1,5 +1,6 @@
+import pygame
 from Code.Background import Background
-from Code.Const import WIN_WIDTH, WIN_HEIGHT
+from Code.Const import WIN_HEIGHT, GAME_VOLUME
 
 
 class EntityFactory: #classe Factory de acordo com design pattern não tem init
@@ -9,6 +10,12 @@ class EntityFactory: #classe Factory de acordo com design pattern não tem init
         match entity_name :
             case 'Level1Bg':
                 list_road = []
+
+                #Passa a musica da fase 1
+                pygame.mixer_music.set_volume(GAME_VOLUME + 0.3)
+                pygame.mixer_music.load('./asset/Tema_Corrida/Level1/lvl1Song.mp3')
+                pygame.mixer_music.play(-1)  # esse -1 significa que quando terminar a musica reinicia
+
                 #Posições das imagens que serão usadas de background
                 positions = [30, -50, 530]
                 for i in range(3):

@@ -24,8 +24,12 @@ class Menu:
             self.window.blit(source=self.surf, dest=self.rect)
 
             #cria o título do menu
-            self.menu_text(text_size=50, text='Car Crash', text_color=COLOR_YELLOW,
-                           text_center_pos=((WIN_WIDTH / 2), 70))
+            self.menu_text(text_size=50, text='Car crash', text_color=COLOR_YELLOW,
+                           text_center_pos=((WIN_WIDTH / 2), 40))
+            self.menu_text(text_size=50, text='vs', text_color=COLOR_YELLOW,
+                           text_center_pos=((WIN_WIDTH / 2), 80))
+            self.menu_text(text_size=50, text='Cop', text_color=COLOR_YELLOW,
+                           text_center_pos=((WIN_WIDTH / 2), 130))
 
             #Cria e passa os parametros para o menu
             for i in range(len(MENU_OPTION)):
