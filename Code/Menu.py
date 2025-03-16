@@ -1,10 +1,8 @@
-from pydoc import text
-
 import pygame
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from Code.Const import WIN_WIDTH, COLOR_YELLOW, MENU_OPTION, COLOR_WHITE
+from Code.Const import WIN_WIDTH, COLOR_YELLOW, MENU_OPTION, COLOR_WHITE, GAME_VOLUME
 
 
 class Menu:
@@ -15,9 +13,10 @@ class Menu:
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self, ):
-
+        #Define a opção do menu atual
+        menu_option = 0
         #Configura a musica do menu
-        pygame.mixer_music.set_volume(0.4)
+        pygame.mixer_music.set_volume(0.1)
         pygame.mixer_music.load('./asset/Tema_Corrida/on-the-road-to-the-eighties_59sec-177566.mp3')
         pygame.mixer_music.play(-1)  # esse -1 significa que quando terminar a musica reinicia
 
@@ -30,11 +29,12 @@ class Menu:
 
             #Cria e passa os parametros para o menu
             for i in range(len(MENU_OPTION)):
-                self.menu_text_opcoes(text_size=20, text=MENU_OPTION[i], text_color=COLOR_WHITE,
+                if i == menu_option :
+                    self.menu_text_opcoes(text_size=20, text=MENU_OPTION[i], text_color=COLOR_YELLOW,
                            text_center_pos=((WIN_WIDTH / 2), 200 + 25 * i))
-
-            #Atualiza a tela para mandar as informações
-            pygame.display.flip()
+                else :
+                    self.menu_text_opcoes(text_size=20, text=MENU_OPTION[i], text_color=COLOR_WHITE,
+                                          text_center_pos=((WIN_WIDTH / 2), 200 + 25 * i))
 
             # check por todos os eventos
             # fecha a janela
@@ -42,6 +42,29 @@ class Menu:
                if event.type == pygame.QUIT:
                    pygame.quit() #close window
                    quit() #sai da tela
+
+               #Verifica a tecla que foi digitada
+               if event.type == pygame.KEYDOWN:
+                   # se foi setinha para baixo incrementa o menu
+                   if event.key == pygame.K_DOWN:
+                       if menu_option < len(MENU_OPTION) - 1 :
+                           menu_option += 1 #faz o incremente da variavel
+                       else:
+                           menu_option = 0
+
+                   # se foi setinha para cima incrementa o menu
+                   if event.key == pygame.K_UP:
+                       if menu_option > 0 :
+                           menu_option -= 1 #faz o decremente da variavel
+                       else:
+                           menu_option = len(MENU_OPTION) - 1
+
+                   # se o enter foi digitado
+                   if event.key == pygame.K_RETURN:
+                       return MENU_OPTION[menu_option]
+
+            # Atualiza a tela para mandar as informações
+            pygame.display.flip()
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
         text_font: Font = pygame.font.SysFont(name="Magneto", size=text_size)
