@@ -1,6 +1,9 @@
-import pygame
+
+import random
 from Code.Background import Background
-from Code.Const import WIN_HEIGHT, GAME_VOLUME
+from Code.Const import WIN_HEIGHT, WIN_WIDTH
+from Code.Enemy import Enemy
+from Code.Player import Player
 
 
 class EntityFactory: #classe Factory de acordo com design pattern não tem init
@@ -11,16 +14,24 @@ class EntityFactory: #classe Factory de acordo com design pattern não tem init
             case 'Level1Bg':
                 list_road = []
 
-                #Passa a musica da fase 1
-                pygame.mixer_music.set_volume(GAME_VOLUME + 0.3)
-                pygame.mixer_music.load('./asset/Tema_Corrida/Level1/lvl1Song.mp3')
-                pygame.mixer_music.play(-1)  # esse -1 significa que quando terminar a musica reinicia
-
                 #Posições das imagens que serão usadas de background
-                positions = [30, -50, 530]
+                positions = [-80, -70, 290]
                 for i in range(3):
                     #Configura a imagem de acordo com o Background
-                    list_road.append(Background( name=f'Level1/Road_0{i}', position=(positions[i],0)))
-                    list_road.append(Background(name=f'Level1/Road_0{i}', position=(positions[i], WIN_HEIGHT)))
+                    list_road.append(Background( name=f'Level/Road_00', position=(0 ,positions[i])))
+                    list_road.append(Background(name=f'Level/Road_00', position=(WIN_WIDTH,positions[i])))
 
                 return list_road
+
+            case 'Player1' :
+                return Player( name=f'Level/car_1_01', position=( 10, ( WIN_HEIGHT / 2 ) - 50 ) ) #procura o arquivo do carro e
+                                                                                             #posiciona ele na tela
+            case 'Player2':
+                return Player(name=f'Level/car_3_01',
+                              position=(10, (WIN_HEIGHT / 2) + 50))
+
+            case 'Enemy1':
+                return Enemy(name=f'Level/car_2_01', position=(WIN_WIDTH + 10 , random.randint(40, WIN_HEIGHT - 40))) #define a posição
+
+            case 'Enemy2':
+                return Enemy(name=f'Level/enemy_2', position=(WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))

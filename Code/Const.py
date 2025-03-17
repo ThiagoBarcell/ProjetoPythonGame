@@ -1,3 +1,5 @@
+import pygame
+
 # C
 COLOR_YELLOW = (253, 255, 47)
 COLOR_WHITE = (255,255,255)
@@ -13,6 +15,20 @@ ENTITY_SPEED ={
     'Level1Bg5':5,
     'Level1Bg6':6,
 }
+ENTITY_SPEED_FIXO = 10
+
+EVENT_ENEMY = pygame.USEREVENT + 1
+
+# p
+PLAYER_KEY_UP = { 'Level/car_1_01': pygame.K_UP,
+                  'Level/car_3_01': pygame.K_w}
+PLAYER_KEY_DOWN = { 'Level/car_1_01': pygame.K_DOWN,
+                  'Level/car_3_01': pygame.K_s}
+PLAYER_KEY_LEFT = { 'Level/car_1_01': pygame.K_LEFT,
+                  'Level/car_3_01': pygame.K_a}
+PLAYER_KEY_RIGHT = { 'Level/car_1_01': pygame.K_RIGHT,
+                  'Level/car_3_01': pygame.K_d}
+PLAYER_FAROL = 0
 
 # G
 GAME_VOLUME = 0.1
@@ -24,6 +40,9 @@ MENU_OPTION = ( 'NEW GAME 1P',
                 'SCORE',
                 'EXIT')
 
+# S
+SPAWN_TIME = 4000
+
 # W
-WIN_WIDTH = 576
+WIN_WIDTH = 510
 WIN_HEIGHT = 324
