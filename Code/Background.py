@@ -1,8 +1,9 @@
+
 from Code.Const import WIN_HEIGHT, WIN_WIDTH
 from Code.Entity import Entity
 
 
-class Background(Entity):
+class Background(Entity): #Fundo da tela
     def __init__(self, name: str, position: tuple):
         super().__init__(name, position)
 

@@ -18,8 +18,8 @@ class EntityFactory: #classe Factory de acordo com design pattern não tem init
                 positions = [-80, -70, 290]
                 for i in range(3):
                     #Configura a imagem de acordo com o Background
-                    list_road.append(Background( name=f'Level/Road_00', position=(0 ,positions[i])))
-                    list_road.append(Background(name=f'Level/Road_00', position=(WIN_WIDTH,positions[i])))
+                    list_road.append(Background( name=f'Level/Road_0{i}', position=(0 ,positions[i])))
+                    list_road.append(Background(name=f'Level/Road_0{i}', position=(WIN_WIDTH,positions[i])))
 
                 return list_road
 

@@ -33,6 +33,15 @@ PLAYER_FAROL = 0
 # G
 GAME_VOLUME = 0.1
 
+# H
+HEALTH_GLOBAL ={
+      'Level/car_1_01': 100,
+      'Level/car_2_01': 100,
+      'Level/car_3_01': 100,
+      'Level/Road_00': 100,
+      'Level/Road_01': 100,
+      'Level/Road_02': 100 }
+
 # M
 MENU_OPTION = ( 'NEW GAME 1P',
                 'NEW GAME 2P - COOPERATIVE',
@@ -41,7 +50,7 @@ MENU_OPTION = ( 'NEW GAME 1P',
                 'EXIT')
 
 # S
-SPAWN_TIME = 4000
+SPAWN_TIME = 1000
 
 # W
 WIN_WIDTH = 510

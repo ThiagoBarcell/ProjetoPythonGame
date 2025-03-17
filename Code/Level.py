@@ -1,12 +1,12 @@
 import sys
-import random
 
 import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
 
-from Code.Const import GAME_VOLUME, ENTITY_SPEED_FIXO, COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
+from Code.Const import GAME_VOLUME, COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
 from Code.Entity import Entity
+from Code.EntityMediator import EntityMediator
 from Code.EntityFactory import EntityFactory
 
 
@@ -34,6 +34,12 @@ class Level:
 
         while True :
             clock.tick(60)
+
+            #Faz a verificação da colisão com objetos
+            EntityMediator.verifica_colisao(entity_list=self.entity_list)
+
+            #Verifica a vida das Entidades
+            EntityMediator.verifica_health(entity_list=self.entity_list)
 
             for ent in self.entity_list :
                 self.window.blit(source=ent.surf, dest=ent.rect)

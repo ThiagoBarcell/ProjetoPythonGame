@@ -7,6 +7,4 @@ class Enemy(Entity):
         super().__init__(name, position)
 
     def move(self):
-        self.rect.centerx -= 8
-        if self.rect.right <= 0:
-            self.rect.left = WIN_WIDTH
+        self.rect.centerx -= 8 #velocidadee dos carros inimigos
