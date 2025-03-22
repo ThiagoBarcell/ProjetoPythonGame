@@ -4,6 +4,17 @@ import pygame
 COLOR_YELLOW = (253, 255, 47)
 COLOR_WHITE = (255,255,255)
 COLOR_BLACK = (0,0,0)
+COLOR_RED = (255,0,0)
+COLOR_BLUE =(33,0,255)
+
+# D
+DAMAGE_GLOBAL ={
+      'Level/car_1_01': 100,
+      'Level/car_2_01': 20,
+      'Level/car_3_01': 100,
+      'Level/Road_00': 100,
+      'Level/Road_01': 100,
+      'Level/Road_02': 100 }
 
 # E
 ENTITY_SPEED ={

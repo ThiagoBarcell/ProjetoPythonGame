@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 import pygame.image
 
-from Code.Const import HEALTH_GLOBAL
+from Code.Const import HEALTH_GLOBAL, DAMAGE_GLOBAL
 
 
 class Entity(ABC):
@@ -12,6 +12,8 @@ class Entity(ABC):
         self.rect = self.surf.get_rect(left=position[0], top=position[1])
         self.speed = 0
         self.health = HEALTH_GLOBAL[self.name]
+        self.damage = DAMAGE_GLOBAL[self.name]
+        self.last_damage = 'None'
 
     @abstractmethod
     def move(self):

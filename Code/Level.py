@@ -3,11 +3,11 @@ import sys
 import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
-
-from Code.Const import GAME_VOLUME, COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME
+from Code.Const import GAME_VOLUME, COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, COLOR_RED
 from Code.Entity import Entity
 from Code.EntityMediator import EntityMediator
 from Code.EntityFactory import EntityFactory
+from Code.Incrementer import Incrementer
 
 
 class Level:
@@ -44,6 +44,13 @@ class Level:
             for ent in self.entity_list :
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
+
+                if ent.name == 'Level/car_1_01': #se for o carro vermelho
+                    self.level_text(14, f'Player1 - Helth : {ent.health}', COLOR_RED, (10, 25))
+                    self.level_text(14, f'Player1 - Pontos : {111}', COLOR_RED, (10, 45))
+
+                if ent.name == 'Level/car_3_01': #se for o carro vermelho
+                    self.level_text(14, f'Player2 - Helth : {ent.health}', COLOR_RED, (10, 45))
 
             #Eventos da classe
             for event in pygame.event.get():
