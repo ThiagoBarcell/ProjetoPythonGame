@@ -30,6 +30,8 @@ ENTITY_SPEED_FIXO = 10
 
 EVENT_ENEMY = pygame.USEREVENT + 1
 
+EVENT_CRASH = pygame.USEREVENT + 2
+
 # p
 PLAYER_KEY_UP = { 'Level/car_1_01': pygame.K_UP,
                   'Level/car_3_01': pygame.K_w}
@@ -46,9 +48,9 @@ GAME_VOLUME = 0.1
 
 # H
 HEALTH_GLOBAL ={
-      'Level/car_1_01': 100,
+      'Level/car_1_01': 101,
       'Level/car_2_01': 100,
-      'Level/car_3_01': 100,
+      'Level/car_3_01': 101,
       'Level/Road_00': 100,
       'Level/Road_01': 100,
       'Level/Road_02': 100 }

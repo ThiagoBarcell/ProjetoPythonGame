@@ -3,11 +3,13 @@ import sys
 import pygame.display
 from pygame import Surface, Rect
 from pygame.font import Font
-from Code.Const import GAME_VOLUME, COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, COLOR_RED
+from Code.Const import GAME_VOLUME, COLOR_WHITE, WIN_HEIGHT, MENU_OPTION, EVENT_ENEMY, SPAWN_TIME, COLOR_RED, \
+    EVENT_CRASH
 from Code.Entity import Entity
 from Code.EntityMediator import EntityMediator
 from Code.EntityFactory import EntityFactory
-from Code.Incrementer import Incrementer
+from Code.Incrementer import Incrementador
+from Code.Player import Player
 
 
 class Level:
@@ -24,6 +26,7 @@ class Level:
             self.entity_list.append(EntityFactory.get_entity('Player2'))  # Adiciona o player2
 
         pygame.time.set_timer(EVENT_ENEMY, SPAWN_TIME) #A cada dois segundos para gerar o inimigo
+        pygame.time.set_timer(EVENT_CRASH, 100)
 
     def run(self):
         # Passa a musica da fase 1
@@ -31,6 +34,9 @@ class Level:
         pygame.mixer_music.load('./asset/Tema_Corrida/Level/lvl1Song.mp3')
         pygame.mixer_music.play(-1)  # esse -1 significa que quando terminar a musica reinicia
         clock = pygame.time.Clock()
+
+        incrementador = Incrementador()
+        incrementador.iniciar()
 
         while True :
             clock.tick(60)
@@ -47,7 +53,7 @@ class Level:
 
                 if ent.name == 'Level/car_1_01': #se for o carro vermelho
                     self.level_text(14, f'Player1 - Helth : {ent.health}', COLOR_RED, (10, 25))
-                    self.level_text(14, f'Player1 - Pontos : {111}', COLOR_RED, (10, 45))
+                    self.level_text(14, f'Player1 - Pontos : {incrementador.valor}', COLOR_RED, (10, 45))
 
                 if ent.name == 'Level/car_3_01': #se for o carro vermelho
                     self.level_text(14, f'Player2 - Helth : {ent.health}', COLOR_RED, (10, 45))
@@ -61,6 +67,12 @@ class Level:
                 if event.type == EVENT_ENEMY:
                     #choice = random.choice(('Enemy1', 'Enemy2'))
                     self.entity_list.append( EntityFactory.get_entity('Enemy1') )
+
+                if event.type == EVENT_CRASH:
+                    for ent in self.entity_list:
+                        if ent.name == 'Level/car_1_01':
+                            if ent.health <= 1:
+                                return True
 
             self.level_text(14, f'{self.name} - Timeout: {self.timeout/1000 :.1f}s', COLOR_WHITE, (10,5) )
             self.level_text(14, f'fps : {clock.get_fps() :.0f}', COLOR_WHITE, (10, WIN_HEIGHT - 35))

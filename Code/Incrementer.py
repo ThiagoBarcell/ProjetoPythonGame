@@ -1,27 +1,23 @@
-import time
 import threading
 
-class Incrementer:
+class Incrementador:
     def __init__(self):
-        self.value = 0
-        self.running = True
-        self.thread = threading.Thread(target=self.increment_loop)
-        self.thread.start()
+        self.valor = 0
+        self.executando = True
 
-    def increment_loop(self):
-        while self.running:
-            time.sleep(10)  # Aguarda 10 segundos
-            self.value += 25
-            #print(f"Valor atualizado: {self.value}")
+    def incrementar(self):
+        while self.executando:
+            self.valor += 5
+            threading.Event().wait(10)  # Aguarda 10 segundos
 
-    def stop(self):
-        self.running = False
-        self.thread.join()
+    def iniciar(self):
+        thread = threading.Thread(target=self.incrementar, daemon=True)
+        thread.start()
+        return thread
 
-#
-# inc = Incrementer()
-# try:
-#     while True:
-#         time.sleep(1)  # Mantém o programa rodando
-# except KeyboardInterrupt:
-#     inc.stop()  # Para a thread ao interromper o programa
+    def parar(self):
+        self.executando = False
+
+# Exemplo de uso
+# incrementador = Incrementador()
+# incrementador.iniciar()

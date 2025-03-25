@@ -29,8 +29,6 @@ class EntityMediator: #classe Mediator de acordo com design pattern não tem ini
                 enti1.last_damage = enti2.name
                 enti2.last_damage = enti1.name
 
-    #@staticmethod
-    #def __give_score():
 
     @staticmethod
     def verifica_colisao(entity_list: list[Entity] ):
