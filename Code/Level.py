@@ -88,7 +88,6 @@ class Level:
             self.level_text(14, f'entidades : {len(self.entity_list)}', COLOR_WHITE, (10, WIN_HEIGHT - 15))
 
             pygame.display.flip()
-        pass
 
     def level_text(self, text_size: int, text : str, text_color: tuple, text_pos: tuple ):
         text_font : Font = pygame.font.SysFont( name="Lucida Sans Typewriter", size=text_size )
