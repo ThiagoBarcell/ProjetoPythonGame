@@ -26,6 +26,16 @@ ENTITY_SPEED ={
     'Level1Bg5':5,
     'Level1Bg6':6,
 }
+
+ENTITY_PONTOS = {
+    'Level/car_1_01': 0,
+      'Level/car_2_01': 0,
+      'Level/car_3_01': 0,
+      'Level/Road_00': 0,
+      'Level/Road_01': 0,
+      'Level/Road_02': 0
+}
+
 ENTITY_SPEED_FIXO = 10
 
 EVENT_ENEMY = pygame.USEREVENT + 1
