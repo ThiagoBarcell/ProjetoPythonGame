@@ -77,10 +77,10 @@ class Level:
                     for ent in self.entity_list:
                         if ent.name == 'Level/car_1_01':
                             if ent.health <= 1:
-                                if isinstance(ent, Player) and ent.name == 'Player1':
-                                    player_score[0] = ent.score
-                                if isinstance(ent, Player) and ent.name == 'Player2':
-                                    player_score[1] = ent.score
+                                if isinstance(ent, Player) and ent.name == 'Level/car_1_01':
+                                    player_score[0] = incrementador.valor
+                                if isinstance(ent, Player) and ent.name == 'Level/car_3_01':
+                                    player_score[1] = incrementador.valor
                                 return True
 
             self.level_text(14, f'{self.name} - Timeout: {self.timeout/1000 :.1f}s', COLOR_WHITE, (10,5) )
