@@ -8,7 +8,7 @@ class Incrementador:
     def incrementar(self):
         while self.executando:
             self.valor += 5
-            threading.Event().wait(10)  # Aguarda 10 segundos
+            threading.Event().wait(5)  # Aguarda 10 segundos
 
     def iniciar(self):
         thread = threading.Thread(target=self.incrementar, daemon=True)

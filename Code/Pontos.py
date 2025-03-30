@@ -3,7 +3,6 @@ from datetime import datetime
 
 import pygame
 from pygame import Surface, Rect, KEYDOWN, K_RETURN, K_BACKSPACE, K_ESCAPE
-from pygame.examples.aliens import Score
 from pygame.font import Font
 
 from Code.Const import COLOR_YELLOW, PONTOS_POSI, MENU_OPTION, COLOR_WHITE, COLOR_BLACK
@@ -29,7 +28,7 @@ class Pontuacao:
             self.texto_pontuacao( 48, 'Game Over', COLOR_BLACK, PONTOS_POSI['Title'] )
             if game_mode ==MENU_OPTION[0]:
                 score = player_pontos[0]
-                text = 'Jogador 1 digite seu nick ( 4 caracteres ) : '
+                text = 'Digite seu nick ( 6 caracteres ) : '
 
             #se for modo de jogo cooperativo
             if game_mode == MENU_OPTION[1]:
@@ -52,17 +51,17 @@ class Pontuacao:
                     pygame.quit()
                     sys.exit()
                 elif event.type == KEYDOWN:
-                    if event.key == K_RETURN and len(name) == 4:
+                    if event.key == K_RETURN and len(name) == 6:
                         db_proxi.insere_dados({'date': get_formatted_date(), 'name':name, 'score':score })
                         self.mostra_pontuacao()
                         return
                     elif event.key == K_BACKSPACE :
                         name = name[:-1] #apaga o ultimo caractere
                     else:
-                        if len(name)< 4:
+                        if len(name)< 6:
                             name += event.unicode
 
-            self.texto_pontuacao(20, name, COLOR_WHITE, PONTOS_POSI['Name'])
+            self.texto_pontuacao(20, name, COLOR_BLACK, PONTOS_POSI['Name'])
 
             # Atualizar o display para aparecer na tela
             pygame.display.flip()
@@ -74,14 +73,14 @@ class Pontuacao:
         # Desenhando a imagem na tela
         self.window.blit(source=self.surf, dest=self.rect)
         self.texto_pontuacao(48, 'TOP 10', COLOR_BLACK, PONTOS_POSI['Title'])
-        self.texto_pontuacao(20, 'Nome       Pontos           Data      ', COLOR_BLACK, PONTOS_POSI['Label'])
+        self.texto_pontuacao(20, '  Nome       Pontos       Data      ', COLOR_BLACK, PONTOS_POSI['Label'])
         db_proxy = DBProxy('DB_PONTUACAO')
         lista_pontos = db_proxy.retorna_top10()
         db_proxy.close()
 
         for pontos in lista_pontos:
             id_,player_name,player_pts,player_data = pontos
-            self.texto_pontuacao(20, f'{player_name}         {player_pts:05d}     {player_data}', COLOR_BLACK,
+            self.texto_pontuacao(20, f' {player_name}     {player_pts:05d}     {player_data}', COLOR_BLACK,
                             PONTOS_POSI[lista_pontos.index(pontos)])
 
         while True:

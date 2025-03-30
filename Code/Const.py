@@ -11,7 +11,7 @@ COLOR_BLUE =(33,0,255)
 DAMAGE_GLOBAL ={
       'Level/car_1_01': 100,
       'Level/car_2_01': 20,
-      'Level/car_3_01': 100,
+      'Level/car_3_01': 20,
       'Level/Road_00': 100,
       'Level/Road_01': 100,
       'Level/Road_02': 100 }
@@ -59,21 +59,21 @@ GAME_VOLUME = 0.1
 # H
 HEALTH_GLOBAL ={
       'Level/car_1_01': 101,
-      'Level/car_2_01': 100,
+      'Level/car_2_01': 101,
       'Level/car_3_01': 101,
       'Level/Road_00': 100,
       'Level/Road_01': 100,
       'Level/Road_02': 100 }
 
 # M
-MENU_OPTION = ( 'NEW GAME 1P',
-                'NEW GAME 2P - COOPERATIVE',
-                'NEW GAME 2P - COMPETITIVE',
-                'SCORE',
-                'EXIT')
+MENU_OPTION = ( 'Novo Jogo',
+                #'NEW GAME 2P - COOPERATIVE',
+                #'NEW GAME 2P - COMPETITIVE',
+                'Melhores Pontuações',
+                'Sair')
 
 # S
-SPAWN_TIME = 1000
+SPAWN_TIME = 500
 
 # W
 WIN_WIDTH = 510
@@ -81,7 +81,7 @@ WIN_HEIGHT = 324
 
 PONTOS_POSI = {'Title': (WIN_WIDTH / 2, 50),
              'EnterName': (WIN_WIDTH / 2, 80),
-             'Label': (WIN_WIDTH / 2, 90),
+             'Label': (( WIN_WIDTH / 2 ) - 20, 90),
              'Name': (WIN_WIDTH / 2, 110),
              0: (WIN_WIDTH / 2, 110),
              1: (WIN_WIDTH / 2, 130),

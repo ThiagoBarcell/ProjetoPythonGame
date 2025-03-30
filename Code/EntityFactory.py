@@ -20,7 +20,6 @@ class EntityFactory: #classe Factory de acordo com design pattern não tem init
                     #Configura a imagem de acordo com o Background
                     list_road.append(Background( name=f'Level/Road_0{i}', position=(0 ,positions[i])))
                     list_road.append(Background(name=f'Level/Road_0{i}', position=(WIN_WIDTH,positions[i])))
-
                 return list_road
 
             case 'Player1' :
@@ -34,4 +33,4 @@ class EntityFactory: #classe Factory de acordo com design pattern não tem init
                 return Enemy(name=f'Level/car_2_01', position=(WIN_WIDTH + 10 , random.randint(40, WIN_HEIGHT - 40))) #define a posição
 
             case 'Enemy2':
-                return Enemy(name=f'Level/enemy_2', position=(WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))
+                return Enemy(name=f'Level/car_3_01', position=(WIN_WIDTH + 10, random.randint(40, WIN_HEIGHT - 40)))

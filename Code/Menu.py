@@ -9,7 +9,7 @@ class Menu:
     # ao criar o objeto ja carrega o background
     def __init__(self, window):
         self.window = window
-        self.surf = pygame.image.load('./asset/Tema_Corrida/Kit_Background/city 1/6.png')
+        self.surf = pygame.image.load('./asset/Tema_Corrida/Level/BG_Menu.png')
         self.rect = self.surf.get_rect(left=0, top=0)
 
     def run(self, ):
@@ -24,12 +24,10 @@ class Menu:
             self.window.blit(source=self.surf, dest=self.rect)
 
             #cria o título do menu
-            self.menu_text(text_size=50, text='Car crash', text_color=COLOR_YELLOW,
+            self.menu_text(text_size=50, text='Car', text_color=COLOR_YELLOW,
                            text_center_pos=((WIN_WIDTH / 2), 40))
-            self.menu_text(text_size=50, text='vs', text_color=COLOR_YELLOW,
+            self.menu_text(text_size=50, text='Scape', text_color=COLOR_YELLOW,
                            text_center_pos=((WIN_WIDTH / 2), 80))
-            self.menu_text(text_size=50, text='Cop', text_color=COLOR_YELLOW,
-                           text_center_pos=((WIN_WIDTH / 2), 130))
 
             #Cria e passa os parametros para o menu
             for i in range(len(MENU_OPTION)):
@@ -71,7 +69,7 @@ class Menu:
             pygame.display.flip()
 
     def menu_text(self, text_size: int, text: str, text_color: tuple, text_center_pos: tuple):
-        text_font: Font = pygame.font.SysFont(name="Magneto", size=text_size)
+        text_font: Font = pygame.font.SysFont(name="Lucida Sans Typewriter", size=text_size)
         text_surf: Surface = text_font.render(text, True, text_color).convert_alpha()
         text_rect: Rect = text_surf.get_rect(center=text_center_pos)
         self.window.blit(source=text_surf, dest=text_rect)

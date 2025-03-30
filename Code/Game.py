@@ -19,18 +19,19 @@ class Game:
             menu = Menu(self.window)
             menu_return = menu.run() #recebe a opção selecionada no menu
 
-            if menu_return in [MENU_OPTION[0], MENU_OPTION[1], MENU_OPTION[2]]:
+            #if menu_return in [MENU_OPTION[0], MENU_OPTION[1], MENU_OPTION[2]]:
+            if menu_return in [MENU_OPTION[0]]:
                 player_pontos = [0, 0] # pontos do jogador 1 e do 2
                 level = Level( self.window, name='Level 1', game_mode=menu_return, player_pontuacao=player_pontos)
                 level_return = level.run(player_pontos)
                 if level_return:
                     pontos.salvar_pontuacao(menu_return, player_pontos)
 
-            elif menu_return == MENU_OPTION[3]:
+            elif menu_return == MENU_OPTION[1]:
                 pontos.mostra_pontuacao()
                 pass
 
-            elif menu_return == MENU_OPTION[4]:
+            elif menu_return == MENU_OPTION[2]:
                 pygame.quit() #Fecha a janela
                 quit() #fecha a aplicação
             else:
